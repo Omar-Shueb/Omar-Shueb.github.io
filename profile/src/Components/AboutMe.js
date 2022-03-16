@@ -1,4 +1,4 @@
-import { Flex, Box, Container, Heading } from "@chakra-ui/react";
+import { Flex, Box, Container, Heading, Image } from "@chakra-ui/react";
 import { SlideFade } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { useInViewport } from "react-in-viewport";
@@ -19,21 +19,17 @@ export default function AboutMe() {
       height="100vh"
       width="full"
       shadow="dark-lg"
-      overflow={"scroll"}
+      justify="space-evenly"
+      align="center"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          width: "100%",
-        }}
+      <Flex
+        direction="column"
+        height="80vh"
+        width="50vw"
+        textAlign="left"
+        justify="space-evenly"
       >
-        <div
-          style={{
-            marginLeft: "10vw",
-            marginTop: "5vh",
-          }}
-        >
+        <Flex width={"50vw"} justify="space-evenly">
           <SlideFade
             in={inViewport}
             offsetX="-100px"
@@ -41,72 +37,79 @@ export default function AboutMe() {
               enter: { delay: 0.5, duration: 0.6 },
               exit: { duration: 0.6 },
             }}
+            whileHover={{ scale: 1.1 }}
           >
-            <Box p={5} shadow="2xl" borderWidth="1px">
-              <img
-                style={{
-                  borderRadius: "10px",
-                }}
-                width={"320px"}
-                src="Omar.jpg"
-                alt="Omar Shueb"
-                objectFit="cover"
-              />
+            <Box
+              style={{ transform: "rotate(-1deg)" }}
+              borderWidth="2px"
+              borderColor={"#E7520C"}
+            >
+              <Image src="/wordle.png" height="25vh" />
             </Box>
           </SlideFade>
-        </div>
-        <div
-          style={{
-            marginRight: "8vw",
-            marginTop: "5vh",
-            textAlign: "right",
-          }}
-        >
           <SlideFade
             in={inViewport}
-            offsetX="100px"
+            offsetX="-100px"
             transition={{
-              enter: { delay: 0.8, duration: 0.6 },
+              enter: { delay: 0.5, duration: 0.6 },
               exit: { duration: 0.6 },
             }}
+            whileHover={{ scale: 1.1 }}
           >
-            <Heading as="h1" size="3xl" color={"#E7520C"}>
-              About Me
-            </Heading>
-          </SlideFade>
-          <SlideFade
-            in={inViewport}
-            offsetX="150px"
-            transition={{
-              enter: { delay: 0.9, duration: 0.6 },
-              exit: { duration: 0.6 },
-            }}
-          >
-            <Container
-              style={{ textAlign: "left", width: "30vw", marginTop: "1vh" }}
+            <Box
+              style={{ transform: "rotate(1deg)" }}
+              borderWidth="2px"
+              borderColor={"#E7520C"}
             >
-              <Heading as="h5" size={"md"} color={"#E7520C"}>
-                Who am I?
-              </Heading>
-              My name's Omar Shueb, and I'm a junior developer in JavaScript and
-              Python. I recently undertook a software engineering course at
-              Sigma Labs; a professional s/w engineering programme with an
-              emphasis on the professional. <br />
-              <br /> Over a 12 week course I learned and received a wealth of
-              experience in:
-              <br />
-              <ul>
-                <li>Front End / Back End Development</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>Using and Developing API's</li>
-                <li>React</li>
-                <li>Continuous Deployment / Integrationl</li>
-              </ul>
-            </Container>
+              <Image src="/worldbank-graph.png" height="25vh" />
+            </Box>
           </SlideFade>
-        </div>
-      </div>
+        </Flex>
+        <Box>
+          <Heading as="h5" size={"md"} color={"#E7520C"}>
+            Who am I?
+          </Heading>
+          I'm Omar Shueb, and I'm a junior developer in JavaScript, SQL and
+          Python. I love learning new skills and picking up new experiences, no
+          matter how challenging they are! Recently, I undertook a software
+          engineering course at Sigma Labs; a professional s/w engineering
+          programme with an emphasis on the professional.
+        </Box>
+      </Flex>
+      <Flex
+        direction="column"
+        width="40vw"
+        textAlign="right"
+        justify="center"
+        align="flex-end"
+      >
+        <Heading as="h1" size="3xl" color={"#E7520C"}>
+          About Me
+        </Heading>
+        <Container style={{ textAlign: "justify", width: "40vw" }}>
+          Over a 12 week course I learned and received a wealth of experience
+          in:
+          <br />
+          <ul style={{ marginLeft: "2vw" }}>
+            <li>Front End / Back End Development</li>
+            <li>JavaScript, SQL and Python</li>
+            <li>Using and Developing API's</li>
+            <li>React</li>
+            <li>Continuous Deployment / Integration</li>
+          </ul>
+          I also was immersed in a number of professional skills and practices
+          such as:
+          <ul style={{ marginLeft: "2vw" }}>
+            <li>Kanban-Style Ticket Systems</li>
+            <li>Pair Programming</li>
+            <li>Daily Stand Ups and Wrap Ups</li>
+            <li>Professional Digital Communications</li>
+            <li>Growth Mindset</li>
+            <li>Agile and Waterfall Development Cycles</li>
+            <li>Development in a Team and Effective Code Reviews</li>
+          </ul>
+        </Container>
+      </Flex>
     </Flex>
   );
 }
