@@ -1,14 +1,15 @@
 import React, { useRef } from "react";
+import { MeshStandardMaterial } from "three";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/headset.glb");
+  const { nodes } = useGLTF("/headset.glb");
   useFrame((state) => {
     group.current.children[0].children.forEach((child, index) => {
       const et = state.clock.elapsedTime;
-      child.position.z = Math.sin((et + index * 2000) / 2) / 15 + 0.25;
+      child.position.z = Math.sin((et + index * 2000) / 2) / 15 + 0.35;
       child.rotation.x = Math.sin((et + index * 2000) / 3) / 10 + 1.8;
       child.rotation.z = Math.sin((et + index * 2000) / 3) / 10;
     });
@@ -21,7 +22,7 @@ export default function Model(props) {
             castShadow
             receiveShadow
             geometry={nodes.defaultMaterial.geometry}
-            material={materials.material}
+            material={new MeshStandardMaterial({ color: "white" })}
           />
         </group>
       </group>

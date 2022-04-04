@@ -1,0 +1,61 @@
+/* 
+
+A new virus is spreading in the UK.
+
+Anyone who catches the virus becomes immediately contagious and therefore able to spread it to others.
+
+However, each person who contracts the virus makes a full recovery in one week, after which time they are no longer contagious.
+
+On Monday 1st March 2021, it is known that N people were infected over the course of the previous week. 
+
+The government issues a 'lockdown' order that will stay in place until the first Monday on which the number of infections during the previous week falls beneath the target threshold: T. 
+
+During the Lockdown, the number of people to whom an infected person spreads the disease within a week is R, the rate of transmission.
+
+
+The requirements of a valid test are as follows:
+R will be a float greater than 0 and less than 1.
+N will be greater than T.
+
+
+
+You must write a JavaScript function that determines the date on which the Lockdown will be lifted.
+The function should take into account the number of people infected, the target threshold and the rate of transmission... or N, T and R... as its three inputs. 
+
+The function should return a string in the format dd/mm/yyyy
+If the requirements of a valid test aren't met, the function should return -1
+
+*/
+
+function lockdownLift(N, T, R) {
+  // Solve here
+  if (N < T || R <= 0 || R >= 1 || !N || !T || !R) {
+    // Checking against the requirements for a valid test
+    return -1;
+  }
+
+  let weeksSinceLockdownStart = 0;
+
+  while (N >= T) {
+    // While the number of infected are above the threshold, change the variable N to the new number of infected
+    // and add one to the weeks counter
+    N = N * R;
+    weeksSinceLockdownStart++;
+  }
+
+  const LockdownEnd = new Date("2021-03-01");
+  const daysSinceLockdownStart = weeksSinceLockdownStart * 7;
+  LockdownEnd.setDate(LockdownEnd.getDate() + daysSinceLockdownStart);
+  // Add to the starting date the number of days by multiplying the weeks count by 7
+
+  return LockdownEnd.toLocaleDateString("en-GB"); // Forcefully always return using the GB date format
+}
+
+/* Tests */
+console.log(lockdownLift(1000, 500, 0.5)); // "15/03/2021"
+console.log(lockdownLift(1000, 500, 0.75)); // "22/03/2021"
+console.log(lockdownLift(5000, 500, 0.75)); // "03/05/2021"
+console.log(lockdownLift(400, 500, 0.75)); // "-1" N cannot be less than T
+console.log(lockdownLift(1000, 500, 0)); // "-1" R has to be greater than 0
+console.log(lockdownLift(1000, 500, 1)); // "-1" R has to be less than 1
+console.log(lockdownLift(1000, 500)); // "-1" R is a missing parameter

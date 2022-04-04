@@ -1,12 +1,12 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import Homepage from "./Components/Homepage";
+import Profile from "./Components/Profile";
 import "./App.css";
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider width="90vw">
       <div className="App">
-        <Homepage />
+        <Profile />
       </div>
     </ChakraProvider>
   );

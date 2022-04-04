@@ -3,7 +3,7 @@ import { SlideFade } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { useInViewport } from "react-in-viewport";
 
-export default function WorldBank() {
+export default function WorldBankMobile() {
   const ref = useRef();
 
   const { inViewport } = useInViewport(
@@ -16,33 +16,31 @@ export default function WorldBank() {
   return (
     <Flex
       ref={ref}
-      height="100vh"
       width="full"
       bg="#E7520C"
       justify="space-evenly"
       align="center"
     >
-      <Flex direction="column" justify={"center"} align="center" width="45vw">
-        <SlideFade
-          in={inViewport}
-          offsetX="-100px"
-          transition={{
-            enter: { delay: 0.5, duration: 0.6 },
-            exit: { duration: 0.6 },
-          }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <Box
-            shadow="dark-lg"
-            style={{ transform: "rotate(-1deg)" }}
-            borderWidth="2px"
-            borderColor={"white"}
-            margin="2vh"
-            width={"40vw"}
-          >
-            <Image src="worldbank-graph.png" alt="graph" width="40vw" />
-          </Box>
-        </SlideFade>
+      <Flex
+        direction="column"
+        justify={"center"}
+        align="center"
+        width="90vw"
+        margin="5vw"
+      >
+        <Heading as="h1" fontSize={"10vw"} color={"white"}>
+          World Bank Indicators
+        </Heading>
+        <Flex justify={"flex-end"} height="5vh" margin="1vh">
+          <Image
+            src="JavaScript-logo.png"
+            height={"100%"}
+            marginRight="0.5vw"
+          />
+          <Image src="React-icon.png" height={"100%"} marginRight="0.5vw" />
+          <Image src="Deno.svg" height={"100%"} marginRight="0.5vw" />
+          <Image src="Postgresql.png" height={"100%"} marginRight="0.5vw" />
+        </Flex>
         <SlideFade
           in={inViewport}
           offsetX="-100px"
@@ -58,34 +56,18 @@ export default function WorldBank() {
             borderWidth="2px"
             borderColor={"white"}
             margin="2vh"
-            width={"40vw"}
+            width={"90vw"}
           >
-            <Image src="worldbank-home.png" alt="home" width={"40vw"} />
+            <Image src="worldbank-home.png" alt="home" width={"90vw"} />
           </Box>
         </SlideFade>
-      </Flex>
-      <Flex
-        textAlign="right"
-        direction="column"
-        justify="center"
-        align="flex-end"
-        width="45vw"
-      >
-        <Heading as="h1" size="3xl" color={"white"}>
-          World Bank Indicators
-        </Heading>
-        <Flex justify={"flex-end"} height="5vh" margin="1vh">
-          <Image
-            src="JavaScript-logo.png"
-            height={"100%"}
-            marginRight="0.5vw"
-          />
-          <Image src="React-icon.png" height={"100%"} marginRight="0.5vw" />
-          <Image src="Deno.svg" height={"100%"} marginRight="0.5vw" />
-          <Image src="Postgresql.png" height={"100%"} marginRight="0.5vw" />
-        </Flex>
-        <Box color={"white"} textAlign="justify" width={"45vw"}>
-          <p>
+        <Box
+          color={"white"}
+          textAlign="justify"
+          width={"90vw"}
+          fontSize={"4vw"}
+        >
+          <Box boxShadow="inner" p="5" rounded="md">
             For this project, working in a team of three developers in a single
             week sprint I created an Analytics Dashboard using a 1.4GB database
             of indicators from the World Bank. For this, a back-end server had
@@ -99,8 +81,28 @@ export default function WorldBank() {
             keeping the website fast and responsive. Again I really enjoyed this
             project due to the focus being on user experience and because of
             this having to think in new and innovative ways.
-          </p>
+          </Box>
         </Box>
+        <SlideFade
+          in={inViewport}
+          offsetX="-100px"
+          transition={{
+            enter: { delay: 0.5, duration: 0.6 },
+            exit: { duration: 0.6 },
+          }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <Box
+            shadow="dark-lg"
+            style={{ transform: "rotate(-1deg)" }}
+            borderWidth="2px"
+            borderColor={"white"}
+            margin="2vh"
+            width={"90vw"}
+          >
+            <Image src="worldbank-graph.png" alt="graph" width="90vw" />
+          </Box>
+        </SlideFade>
       </Flex>
     </Flex>
   );
